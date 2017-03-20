@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ZeroMusic</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/all.css" />
+  </head>
+  <body>
+    <a href="#Select+user" id="select_user" onclick='return page.selectUser()'>Select user</a><br />
+    <input type="file" onchange='return page.uploadSong(this)' />
+    <audio id="player" controls></audio>
+    <ul id="song_list"></ul>
+  </body>
+  <script type="text/javascript" src="js/all.js"></script>
+</html>
