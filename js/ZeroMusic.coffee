@@ -20,10 +20,10 @@ class ZeroMusic extends ZeroFrame
         document.getElementById("select_user").innerHTML = @siteInfo.cert_user_id
         @cmd "fileGet", ["data/users/" + @siteInfo.auth_address + "/content.json", false], (data) =>
           data = if data then JSON.parse(data) else {}
-          data.optional = ".*"
+          data.optional = ".+mp3"
           data.modified = Date.now();
-          json_raw = unescape(encodeURIComponent(JSON.stringify(data, undefined, ' ')));
-          @cmd "fileWrite", ["data/users/" + @siteInfo.auth_address + "/content.json", btoa(unescape(encodeURIComponent(JSON.stringify(data))))], (res) =>
+          jsonRaw = unescape(encodeURIComponent(JSON.stringify(data, undefined, 1)));
+          @cmd "fileWrite", ["data/users/" + @siteInfo.auth_address + "/content.json", btoa(jsonRaw)], (res) =>
             console.log(res)
       else
         document.getElementById("select_user").innerHTML = "Select user"

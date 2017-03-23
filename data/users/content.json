@@ -3,9 +3,9 @@
  "files": {},
  "ignore": ".*",
  "inner_path": "data/users/content.json",
- "modified": 1490289165,
+ "modified": 1490290889,
  "signs": {
-  "1MusicXkuN2pk5hRdmroeyaCLDJtzTicpB": "GxiA9HFuQzWXnEjNsC8WD198DDM6vgB1YzZl5Q1XEnz70XC2BSfYqIQ0+5WRpC7J3qMIIu1a4TXJll7qx6THEHg="
+  "1MusicXkuN2pk5hRdmroeyaCLDJtzTicpB": "GxFYidO/KxR/eT2bd6HKewHKpnNA6oOQwRzAMI3QNPRg/dSgrVIP/SwDYaalDbWxhwjqAj9OAqPtAYYKoxiYv0A="
  },
  "user_contents": {
   "cert_signers": {
@@ -15,7 +15,9 @@
   },
   "permission_rules": {
    ".*": {
-    "files_allowed_optional": ".*",
+    "files_allowed": "data.json",
+    "files_allowed_optional": ".+mp3",
+    "max_size": 10000,
     "max_size_optional": 10485670000
    }
   },
