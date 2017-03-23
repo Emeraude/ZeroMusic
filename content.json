@@ -1,0 +1,50 @@
+{
+ "address": "1MusicXkuN2pk5hRdmroeyaCLDJtzTicpB",
+ "description": "",
+ "files": {
+  "css/all.css": {
+   "sha512": "8f0194f26cbbab1d67326912851d2525a6c30c2820a87c9ac4d3b5724bc93729",
+   "size": 145
+  },
+  "css/test.css": {
+   "sha512": "d418ea214392abe7101dd9b3e25b4ede769facb15f85821b69389bb4dcf5b144",
+   "size": 76
+  },
+  "index.html": {
+   "sha512": "ce48363be5900d076b86b4d039582e44c76f7476506883a14351148682baa815",
+   "size": 472
+  },
+  "js/ZeroFrame.coffee": {
+   "sha512": "9e11586024452c6acbc13196e9bbaf9dc7b29558ec6cc70f37ab7d1eb9fbe98a",
+   "size": 1575
+  },
+  "js/ZeroMusic.coffee": {
+   "sha512": "f86b61bb4117d906b93f0c36c593fe0c211a6c570efd861807e185a234715340",
+   "size": 2187
+  },
+  "js/all.js": {
+   "sha512": "4cfc1b41c3473ba188ce790394c72a3eb426199a48c4e78010f0c2b6c3683eb2",
+   "size": 7739
+  }
+ },
+ "ignore": "(.git|data|.*~)",
+ "includes": {
+  "data/users/content.json": {
+   "signers": [],
+   "signers_required": 1
+  }
+ },
+ "inner_path": "content.json",
+ "modified": 1490289149,
+ "sign": [
+  68052173385776265928393537855058781255843077117387939078958877140999031642693,
+  53260454617290531408351090845590392306489237740490244170554508260010583104526
+ ],
+ "signers_sign": "G50lK79M6vT+mUyolvVvfs4Lr2edan0DQDn5CC1ICA5BwgJ8qrvwo0dRkmewQwsK6Plh/5xB+ZNUbZuuPKPbrn0=",
+ "signs": {
+  "1MusicXkuN2pk5hRdmroeyaCLDJtzTicpB": "G6tL+H2RWvAR1jrbMjLef5i9QwGYW1ZxYeAn8hbaYzQ1aqx6zVERfRfmWEhaUtG8o5WpLwSv9KpR9x6VN925CcY="
+ },
+ "signs_required": 1,
+ "title": "ZeroMusic",
+ "zeronet_version": "0.5.3"
+}

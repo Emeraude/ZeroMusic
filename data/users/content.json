@@ -1,0 +1,24 @@
+{
+ "address": "1MusicXkuN2pk5hRdmroeyaCLDJtzTicpB",
+ "files": {},
+ "ignore": ".*",
+ "inner_path": "data/users/content.json",
+ "modified": 1490289165,
+ "signs": {
+  "1MusicXkuN2pk5hRdmroeyaCLDJtzTicpB": "GxiA9HFuQzWXnEjNsC8WD198DDM6vgB1YzZl5Q1XEnz70XC2BSfYqIQ0+5WRpC7J3qMIIu1a4TXJll7qx6THEHg="
+ },
+ "user_contents": {
+  "cert_signers": {
+   "zeroid.bit": [
+    "1iD5ZQJMNXu43w1qLB8sfdHVKppVMduGz"
+   ]
+  },
+  "permission_rules": {
+   ".*": {
+    "files_allowed_optional": ".*",
+    "max_size_optional": 10485670000
+   }
+  },
+  "permissions": {}
+ }
+}

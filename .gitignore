@@ -1,3 +1,4 @@
-content.json
 all.js
 all.css
+/data/users/*
+!/data/users/content.json
