@@ -3,16 +3,24 @@
  "description": "",
  "files": {
   "css/all.css": {
-   "sha512": "8f0194f26cbbab1d67326912851d2525a6c30c2820a87c9ac4d3b5724bc93729",
-   "size": 145
+   "sha512": "44e732f585ec2d47fb738b1c4b506bfd5306459414b87ad0f5c7b46887c7be8d",
+   "size": 144
+  },
+  "dbschema.json": {
+   "sha512": "34a7cf7156d9fd390b97e54f8a0dd5cba391c2c5e6510e11d6483af3d8345d46",
+   "size": 623
+  },
+  "img/logo.svg": {
+   "sha512": "353edcd0a0bcc9fa1d842659bbafcecde78c80fdcf2ca4b6c04e6010662808d6",
+   "size": 548
   },
   "index.html": {
    "sha512": "ce48363be5900d076b86b4d039582e44c76f7476506883a14351148682baa815",
    "size": 472
   },
   "js/all.js": {
-   "sha512": "4cfc1b41c3473ba188ce790394c72a3eb426199a48c4e78010f0c2b6c3683eb2",
-   "size": 7739
+   "sha512": "f929654ad2e5066ffb41ac15ab5ed25476730594c2a38248d9f78df3992ca900",
+   "size": 9569
   }
  },
  "ignore": "(^\\.git(ignore)?|(js|css)/(?!all)(.*)\\.(js|css)|data|.*(\\.coffee|~)$)",
@@ -23,15 +31,15 @@
   }
  },
  "inner_path": "content.json",
- "modified": 1490290255,
+ "modified": 1490410034,
  "repository": "https://github.com/Emeraude/ZeroMusic",
  "sign": [
-  47865995214369687087521619061425573930451042160877149868036190472718751071740,
-  40176550153662303209411422206537626511974958079349591902519289855122650813202
+  30693898813390231354370018250515753398395369275250696521909697444420196532054,
+  58904003698152526186837696422812266248056276927253973811949368060943074816380
  ],
  "signers_sign": "G50lK79M6vT+mUyolvVvfs4Lr2edan0DQDn5CC1ICA5BwgJ8qrvwo0dRkmewQwsK6Plh/5xB+ZNUbZuuPKPbrn0=",
  "signs": {
-  "1MusicXkuN2pk5hRdmroeyaCLDJtzTicpB": "HBkEmfl2lLaJ+C1b+y8LL8sdTBxNV99bMPB1C2kkHyHMC07Wfe/lPEgCNkvN956vVaU8tS44ahk5dlpza2vwTJY="
+  "1MusicXkuN2pk5hRdmroeyaCLDJtzTicpB": "HCd4gDcSXsn5QBZUOiWfoT1qeFklWOhtAr5eeKpe9O3LwZ0uhRa5ppSfxQ55Rx2CfSF/C8T81slF5/yyJuUegeo="
  },
  "signs_required": 1,
  "title": "ZeroMusic",

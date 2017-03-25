@@ -21,7 +21,7 @@ class ZeroMusic extends ZeroFrame
         @cmd "fileGet", ["data/users/" + @siteInfo.auth_address + "/content.json", false], (data) =>
           data = if data then JSON.parse(data) else {}
           data.optional = ".+mp3"
-          data.modified = Date.now();
+          data.modified = Date.now() / 1000;
           jsonRaw = unescape(encodeURIComponent(JSON.stringify(data, undefined, 1)));
           @cmd "fileWrite", ["data/users/" + @siteInfo.auth_address + "/content.json", btoa(jsonRaw)], (res) =>
             console.log(res)
