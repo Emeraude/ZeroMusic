@@ -33,9 +33,13 @@ class ZeroMusic extends ZeroFrame
     @player.play();
 
   addSong: (song) =>
-    if not document.querySelector('div#artists > ul > li[data-content="' + song.artist + '" i]')
-      document.querySelector('div#artists > ul').innerHTML += '<li data-content="' + song.artist + '" onclick="page.filterByArtist(\'' + song.artist + '\')">' + song.artist + '</li>'
-    document.querySelector('div#songs > ul').innerHTML += '<li><svg width="15" height="15" onclick="page.playSong(\'' + song.path + '\')" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l12 8-12 8z"/></svg><strong>' + song.artist + '</strong> - ' + song.title + '</li>'
+    @cmd "optionalFileInfo", song.path, (res) =>
+      downloaded = ''
+      if res.is_downloaded != 1
+        downloaded = ' class="remote"'
+      if not document.querySelector('div#artists > ul > li[data-content="' + song.artist + '" i]')
+        document.querySelector('div#artists > ul').innerHTML += '<li data-content="' + song.artist + '" onclick="page.filterByArtist(\'' + song.artist + '\')">' + song.artist + '</li>'
+      document.querySelector('div#songs > ul').innerHTML += '<li' + downloaded + '><svg width="15" height="15" onclick="page.playSong(\'' + song.path + '\')" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l12 8-12 8z"/></svg><strong>' + song.artist + '</strong> - ' + song.title + '</li>'
 
   resetSongList: =>
     document.querySelector('div#songs > ul').innerHTML = ''
