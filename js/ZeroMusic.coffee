@@ -60,16 +60,17 @@ class ZeroMusic extends ZeroFrame
     if !name.match /\.mp3$/
       return @cmd "wrapperNotification", ["error", "Only mp3 files are allowed for now.", 5000]
     @cmd "dbQuery", ["SELECT MAX(id) + 1 as next_id FROM songs"], (res) =>
-      path = "data/users/" + @siteInfo.auth_address + '/' + res[0].next_id + '.mp3'
+      id = if res[0] then res[0].next_id else 1
+      path = "data/users/" + @siteInfo.auth_address + '/' + id + '.mp3'
+      metadata = @getMetadata name
+      metadata.path = path
+      metadata.id = id
       reader = new FileReader()
       reader.onload = (e) =>
         @cmd "fileWrite", [path, btoa reader.result], (res) =>
           if res == "ok"
             @cmd "fileGet", ["data/users/" + @siteInfo.auth_address + "/data.json", false], (data) =>
               data = if data then JSON.parse(data) else {songs:[]}
-              metadata = @getMetadata name
-              metadata.path = path
-              metadata.id = res[0].next_id
               data.songs.push metadata
               json_raw = unescape encodeURIComponent JSON.stringify data, undefined, 1
               @cmd "fileWrite", ["data/users/" + @siteInfo.auth_address + "/data.json", btoa(json_raw)], (res) =>
