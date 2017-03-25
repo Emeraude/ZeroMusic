@@ -57,6 +57,8 @@ class ZeroMusic extends ZeroFrame
       return @selectUser()
 
     name = e.files[0].name
+    if !name.match /\.mp3$/
+      return @cmd "wrapperNotification", ["error", "Only mp3 files are allowed for now.", 5000]
     @cmd "dbQuery", ["SELECT MAX(id) + 1 as next_id FROM songs"], (res) =>
       path = "data/users/" + @siteInfo.auth_address + '/' + res[0].next_id + '.mp3'
       reader = new FileReader()
