@@ -39,10 +39,11 @@ class ZeroMusic extends ZeroFrame
   updateDataFile: (name, path, cb) =>
     @cmd "fileGet", ["data/users/" + @siteInfo.auth_address + "/data.json", false], (data) =>
       data = if data then JSON.parse(data) else {songs:[]}
-      data.songs.push {id: 12, title: name, artist: name, track: 1, path: path}
-      json_raw = unescape encodeURIComponent JSON.stringify data, undefined, 1
-      @cmd "fileWrite", ["data/users/" + @siteInfo.auth_address + "/data.json", btoa(json_raw)], (res) =>
-        cb res
+      @cmd "dbQuery", ["SELECT MAX(id) + 1 as next_id FROM songs"], (res) =>
+        data.songs.push {id: res[0].next_id, title: name, artist: name, track: 1, path: path}
+        json_raw = unescape encodeURIComponent JSON.stringify data, undefined, 1
+        @cmd "fileWrite", ["data/users/" + @siteInfo.auth_address + "/data.json", btoa(json_raw)], (res) =>
+          cb res
 
   uploadSong: (e) =>
     if not @siteInfo.cert_user_id
