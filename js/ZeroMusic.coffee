@@ -10,8 +10,8 @@ class ZeroMusic extends ZeroFrame
       @siteInfo = site_info
       if @siteInfo.cert_user_id
         document.getElementById("select_user").innerText = @siteInfo.cert_user_id
-    @cmd "optionalFileList", undefined, (res) =>
-      @addSong file.inner_path for file in res
+    @cmd "dbQuery", ["SELECT * FROM songs"], (res) =>
+      @addSong file for file in res
 
   onRequest: (cmd, message) =>
     if cmd == "setSiteInfo"
@@ -33,8 +33,8 @@ class ZeroMusic extends ZeroFrame
     @player.load();
     @player.play();
 
-  addSong: (file) =>
-    @songList.innerHTML += '<li onclick="page.playSong(\'' + file + '\')">' + file + '</li>'
+  addSong: (song) =>
+    @songList.innerHTML += '<li onclick="page.playSong(\'' + song.path + '\')"><strong>' + song.artist + '</strong> - ' + song.title + '</li>'
 
   updateDataFile: (name, path, cb) =>
     @cmd "fileGet", ["data/users/" + @siteInfo.auth_address + "/data.json", false], (data) =>
