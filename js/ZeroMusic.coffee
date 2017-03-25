@@ -9,7 +9,7 @@ class ZeroMusic extends ZeroFrame
       @siteInfo = site_info
       if @siteInfo.cert_user_id
         document.getElementById("select_user").innerText = @siteInfo.cert_user_id
-    @cmd "dbQuery", ["SELECT * FROM songs"], (res) =>
+    @cmd "dbQuery", ["SELECT * FROM songs ORDER BY artist COLLATE NOCASE ASC, title COLLATE NOCASE ASC"], (res) =>
       @addSong file for file in res
 
   onRequest: (cmd, message) =>
@@ -45,7 +45,7 @@ class ZeroMusic extends ZeroFrame
     document.querySelector('div#songs > ul').innerHTML = ''
 
   filterByArtist: (artist) =>
-    @cmd "dbQuery", ["SELECT * FROM songs WHERE artist = '#{artist}'"], (res) =>
+    @cmd "dbQuery", ["SELECT * FROM songs WHERE artist = '#{artist}' ORDER BY title COLLATE NOCASE ASC"], (res) =>
       if not res.error
         @resetSongList()
         @addSong file for file in res
