@@ -3,6 +3,14 @@ body {
   color: #fff;
 }
 
+svg > path {
+  fill: #fff;
+}
+
+svg > path:hover {
+  cursor: pointer;
+}
+
 a {
   color: #77befa;
 }

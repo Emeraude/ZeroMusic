@@ -5,7 +5,6 @@ class ZeroMusic extends ZeroFrame
 
   onOpenWebsocket: =>
     @player = document.getElementById "player"
-    @songList = document.getElementById "song_list"
     @cmd "site_info", {}, (site_info) =>
       @siteInfo = site_info
       if @siteInfo.cert_user_id
@@ -36,7 +35,7 @@ class ZeroMusic extends ZeroFrame
   addSong: (song) =>
     if not document.querySelector('div#artists > ul > li[data-content="' + song.artist + '" i]')
       document.querySelector('div#artists > ul').innerHTML += '<li data-content="' + song.artist + '">' + song.artist + '</li>'
-    @songList.innerHTML += '<li onclick="page.playSong(\'' + song.path + '\')"><strong>' + song.artist + '</strong> - ' + song.title + '</li>'
+    document.querySelector('div#songs > ul').innerHTML += '<li><svg width="15" height="15" onclick="page.playSong(\'' + song.path + '\')" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l12 8-12 8z"/></svg><strong>' + song.artist + '</strong> - ' + song.title + '</li>'
 
   getMetadata: (filename) =>
     filename = filename.replace(/(_|\.mp3$)/g, ' ').trim()
