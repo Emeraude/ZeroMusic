@@ -36,18 +36,29 @@ class ZeroMusic extends ZeroFrame
   addSong: (file) =>
     @songList.innerHTML += '<li onclick="page.playSong(\'' + file + '\')">' + file + '</li>'
 
+  updateDataFile: (name, path, cb) =>
+    @cmd "fileGet", ["data/users/" + @siteInfo.auth_address + "/data.json", false], (data) =>
+      data = if data then JSON.parse(data) else {songs:[]}
+      data.songs.push {id: 12, title: name, artist: name, track: 1, path: path}
+      json_raw = unescape encodeURIComponent JSON.stringify data, undefined, 1
+      @cmd "fileWrite", ["data/users/" + @siteInfo.auth_address + "/data.json", btoa(json_raw)], (res) =>
+        cb res
+
   uploadSong: (e) =>
     if not @siteInfo.cert_user_id
       return @selectUser()
-    name = "data/users/" + @siteInfo.auth_address + '/' + e.files[0].name.replace /[\s\'\"\(\)]/g, ''
+
+    name = e.files[0].name.replace /\W/g, ''
+    path = "data/users/" + @siteInfo.auth_address + '/' + name
     reader = new FileReader()
     reader.onload = (e) =>
-      @cmd "fileWrite", [name, btoa reader.result], (res) =>
+      @cmd "fileWrite", [path, btoa reader.result], (res) =>
         if res == "ok"
-          @cmd "sitePublish", {inner_path: "data/users/" + @siteInfo.auth_address + "/content.json", sign: true}, (res) =>
-            console.log res
-          @addSong name
-          @playSong name
+          @updateDataFile name, path, (res) =>
+            @cmd "sitePublish", {inner_path: "data/users/" + @siteInfo.auth_address + "/content.json", sign: true}, (res) =>
+              console.log res
+          @addSong path
+          @playSong path
         else
           console.error res
     reader.readAsBinaryString(e.files[0]);

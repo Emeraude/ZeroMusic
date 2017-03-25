@@ -1,0 +1,26 @@
+{
+  "db_name": "ZeroMusic",
+  "db_file": "data/zeromusic.db",
+  "version": 2,
+  "maps": {
+    "users/.+/data.json": {
+      "to_table": ["songs"]
+    }
+  },
+  "tables": {
+    "songs": {
+      "cols": [
+	["id", "INTEGER PRIMARY KEY NOT NULL DEFAULT 0"],
+	["title", "VARCHAR(255) NOT NULL DEFAULT ''"],
+	["artist", "VARCHAR(255) NOT NULL DEFAULT ''"],
+	["track", "INTEGER NOT NULL DEFAULT 0"],
+	["path", "VARCHAR(255) NOT NULL DEFAULT ''"],
+	["json_id", "INTEGER REFERENCES json (json_id) DEFAULT 0"]
+      ],
+      "indexes": [
+	"CREATE UNIQUE INDEX id ON songs(id, json_id)"
+      ],
+      "schema_changed": 10
+    }
+  }
+}
