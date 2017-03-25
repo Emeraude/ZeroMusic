@@ -48,7 +48,7 @@ class ZeroMusic extends ZeroFrame
     if not @siteInfo.cert_user_id
       return @selectUser()
 
-    name = e.files[0].name.replace /\W/g, ''
+    name = e.files[0].name.replace /[^\w.]/g, ''
     path = "data/users/" + @siteInfo.auth_address + '/' + name
     reader = new FileReader()
     reader.onload = (e) =>
