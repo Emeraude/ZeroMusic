@@ -2,9 +2,13 @@
  "address": "1MusicXkuN2pk5hRdmroeyaCLDJtzTicpB",
  "description": "",
  "files": {
+  "README.md": {
+   "sha512": "a6a96a59f7aaec426941b3e00599058ee1cde3929e2dd594888a9663af81c86d",
+   "size": 588
+  },
   "css/all.css": {
-   "sha512": "44e732f585ec2d47fb738b1c4b506bfd5306459414b87ad0f5c7b46887c7be8d",
-   "size": 144
+   "sha512": "81bff68f67c3be8889f0299b800b5a24c3839ab19014757aba059e90dc21e5a2",
+   "size": 777
   },
   "dbschema.json": {
    "sha512": "34a7cf7156d9fd390b97e54f8a0dd5cba391c2c5e6510e11d6483af3d8345d46",
@@ -15,12 +19,12 @@
    "size": 548
   },
   "index.html": {
-   "sha512": "ce48363be5900d076b86b4d039582e44c76f7476506883a14351148682baa815",
-   "size": 472
+   "sha512": "13776b75eb3a964a2153acef0b630f7398db4bbce861e093adc863463726e53b",
+   "size": 639
   },
   "js/all.js": {
-   "sha512": "f929654ad2e5066ffb41ac15ab5ed25476730594c2a38248d9f78df3992ca900",
-   "size": 9569
+   "sha512": "0f94083dcece55c0beee069f1ea0fa203146860b7efdff18e4ccebc85c4b8b24",
+   "size": 9871
   }
  },
  "ignore": "(^\\.git(ignore)?|(js|css)/(?!all)(.*)\\.(js|css)|data|.*(\\.coffee|~)$)",
@@ -31,15 +35,15 @@
   }
  },
  "inner_path": "content.json",
- "modified": 1490410034,
+ "modified": 1490482413,
  "repository": "https://github.com/Emeraude/ZeroMusic",
  "sign": [
-  30693898813390231354370018250515753398395369275250696521909697444420196532054,
-  58904003698152526186837696422812266248056276927253973811949368060943074816380
+  4439918575122013135279322558041671959108908372574224805967252463976069056515,
+  94857232948831652002863979115045978505308094293105813114779800204715870592778
  ],
  "signers_sign": "G50lK79M6vT+mUyolvVvfs4Lr2edan0DQDn5CC1ICA5BwgJ8qrvwo0dRkmewQwsK6Plh/5xB+ZNUbZuuPKPbrn0=",
  "signs": {
-  "1MusicXkuN2pk5hRdmroeyaCLDJtzTicpB": "HCd4gDcSXsn5QBZUOiWfoT1qeFklWOhtAr5eeKpe9O3LwZ0uhRa5ppSfxQ55Rx2CfSF/C8T81slF5/yyJuUegeo="
+  "1MusicXkuN2pk5hRdmroeyaCLDJtzTicpB": "G/KmDXhN6DR433AJ2mleMUdMJThaUpF1qvL1pDVztEtV0mqAVAlhnBbxLSlzh54pLaoZ5bdrWELrY/d0d1+yDJs="
  },
  "signs_required": 1,
  "title": "ZeroMusic",

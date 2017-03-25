@@ -6,16 +6,20 @@
     <link rel="stylesheet" href="css/all.css" />
   </head>
   <body>
-    <a href="#Select+user" id="select_user" onclick='return page.selectUser()'>Select user</a><br />
-    <input type="file" onchange='return page.uploadSong(this)' />
-    <audio id="player" controls></audio>
-    <div id="artists">
-      <h2>Artists</h2>
-      <ul></ul>
+    <div id="top">
+      <a href="#Select+user" id="select_user" onclick='return page.selectUser()'>Select user</a>
+      <input type="file" onchange='return page.uploadSong(this)' />
+      <audio id="player" controls></audio>
     </div>
-    <div id="songs">
-      <h2>Songs</h2>
-      <ul></ul>
+    <div id="container">
+      <div id="artists">
+	<h2>Artists</h2>
+	<ul></ul>
+      </div>
+      <div id="songs">
+	<h2>Songs</h2>
+	<ul></ul>
+      </div>
     </div>
   </body>
   <script type="text/javascript" src="js/all.js"></script>

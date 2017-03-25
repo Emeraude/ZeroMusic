@@ -1,6 +1,11 @@
 body {
   background-color: #222;
   color: #fff;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 svg > path {
@@ -15,11 +20,39 @@ a {
   color: #77befa;
 }
 
+div#top {
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  border-bottom: 1px solid black;
+  position: fixed;
+  top: 0;
+}
+
 div#artists {
   width: 50%;
   float: left;
 }
 
+div#artists::after {
+  clear: both;
+}
+
+div#songs {
+  width: 50%;
+  float: right;
+}
+
 div > ul {
   list-style-type: none;
+}
+
+div#container {
+  width: 100%;
+  margin-top: 40px;
+  clear: both;
+}
+
+div#container::after {
+  clear: both;
 }
