@@ -34,6 +34,8 @@ class ZeroMusic extends ZeroFrame
     @player.play();
 
   addSong: (song) =>
+    if not document.querySelector('div#artists > ul > li[data-content="' + song.artist + '" i]')
+      document.querySelector('div#artists > ul').innerHTML += '<li data-content="' + song.artist + '">' + song.artist + '</li>'
     @songList.innerHTML += '<li onclick="page.playSong(\'' + song.path + '\')"><strong>' + song.artist + '</strong> - ' + song.title + '</li>'
 
   getMetadata: (filename) =>

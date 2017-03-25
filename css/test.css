@@ -6,3 +6,12 @@ body {
 a {
   color: #77befa;
 }
+
+div#artists {
+  width: 50%;
+  float: left;
+}
+
+div > ul {
+  list-style-type: none;
+}
