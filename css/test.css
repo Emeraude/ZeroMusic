@@ -53,6 +53,14 @@ li.remote, li.remote > svg > path {
   fill: #777;
 }
 
+div#songs > ul > li > svg {
+  visibility: hidden;
+}
+
+div#songs > ul > li:hover > svg {
+  visibility: visible;
+}
+
 div#container {
   width: 100%;
   margin-top: 40px;
