@@ -54,11 +54,12 @@ li.remote, li.remote > svg > path {
 }
 
 div#songs > ul > li > svg {
-  visibility: hidden;
+  opacity: 0.0;
+  transition: all 200ms ease-in-out;
 }
 
 div#songs > ul > li:hover > svg {
-  visibility: visible;
+  opacity: 1.0;
 }
 
 div#container {
