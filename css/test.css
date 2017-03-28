@@ -48,17 +48,22 @@ div > ul {
   list-style-type: none;
 }
 
-li.remote, li.remote > svg > path {
+li.remote, li.remote svg > path {
   color: #777;
   fill: #777;
+  stroke: #777;
 }
 
-div#songs > ul > li > svg {
+li.remote svg.removeButton {
+  visibility: hidden;
+}
+
+div#songs > ul > li > .songButtons {
   opacity: 0.0;
   transition: all 200ms ease-in-out;
 }
 
-div#songs > ul > li:hover > svg {
+div#songs > ul > li:hover > .songButtons {
   opacity: 1.0;
 }
 

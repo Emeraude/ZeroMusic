@@ -27,6 +27,9 @@ class ZeroMusic extends ZeroFrame
       else
         document.getElementById("select_user").innerHTML = "Select user"
 
+  removeSong: (file) =>
+    @cmd "optionalFileDelete", file
+
   playSong: (file) =>
     @player.innerHTML = '<source src="' + file + '" />'
     @player.load();
@@ -39,7 +42,8 @@ class ZeroMusic extends ZeroFrame
       li = '<li'
       if res.is_downloaded != 1
         li += ' class="remote"'
-      li += '><svg class="playButton" width="15" height="15" onclick="page.playSong(\'' + song.path + '\')" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l12 8-12 8z"/></svg><strong>' + song.artist + '</strong> - ' + song.title + '</li>'
+      li += '><span class="songButtons"><svg class="removeButton" width="15" height="15" onclick="page.removeSong(\'' + song.path + '\')" xmlns="http://www.w3.org/2000/svg"><path d="M1 15L15 1M1 1l14 14" stroke="#fff" stroke-width="4"/></svg> '
+      li += '<svg class="playButton" width="15" height="15" onclick="page.playSong(\'' + song.path + '\')" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l12 8-12 8z"/></svg></span><strong>' + song.artist + '</strong> - ' + song.title + '</li>'
       document.querySelector('div#songs > ul').innerHTML += li
 
   resetSongList: =>
