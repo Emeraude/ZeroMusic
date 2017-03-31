@@ -73,6 +73,10 @@ class ZeroMusic extends ZeroFrame
         lis += '<svg class="playButton" width="15" height="15" onclick="page.playSong(\'' + song.path + '\')" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l12 8-12 8z"/></svg></span><strong>' + song.artist + '</strong> - ' + song.title + '</li>'
       document.querySelector('div#songs > ul').innerHTML = lis
 
+  resetFilter: =>
+    @currentFilter = null
+    @updateSongsList()
+
   updateLists: =>
     @updateArtistsList()
     @updateSongsList()
