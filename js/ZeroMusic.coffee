@@ -5,12 +5,15 @@ class ZeroMusic extends ZeroFrame
 
   onOpenWebsocket: =>
     @player = document.getElementById "player"
+    @artistsList = [];
+    @songsList = [];
     @cmd "site_info", {}, (site_info) =>
       @siteInfo = site_info
       if @siteInfo.cert_user_id
         document.getElementById("select_user").innerText = @siteInfo.cert_user_id
     @cmd "dbQuery", ["SELECT * FROM songs ORDER BY artist COLLATE NOCASE ASC, title COLLATE NOCASE ASC"], (res) =>
       @addSong file for file in res
+      @updateLists()
 
   onRequest: (cmd, message) =>
     if cmd == "setSiteInfo"
@@ -23,7 +26,6 @@ class ZeroMusic extends ZeroFrame
           data.modified = Date.now() / 1000;
           jsonRaw = unescape(encodeURIComponent(JSON.stringify(data, undefined, 1)));
           @cmd "fileWrite", ["data/users/" + @siteInfo.auth_address + "/content.json", btoa(jsonRaw)], (res) =>
-            console.log(res)
       else
         document.getElementById("select_user").innerHTML = "Select user"
 
@@ -36,24 +38,44 @@ class ZeroMusic extends ZeroFrame
     @player.play();
 
   addSong: (song) =>
-    @cmd "optionalFileInfo", song.path, (res) =>
-      if not document.querySelector('div#artists > ul > li[data-content="' + song.artist + '" i]')
-        document.querySelector('div#artists > ul').innerHTML += '<li data-content="' + song.artist + '"><span onclick="page.filterByArtist(\'' + song.artist.replace(/\'/g, "\\'\\'") + '\')">' + song.artist + '</span></li>'
-      li = '<li'
-      if res.is_downloaded != 1
-        li += ' class="remote"'
-      li += '><span class="songButtons"><svg class="removeButton" width="15" height="15" onclick="page.removeSong(\'' + song.path + '\')" xmlns="http://www.w3.org/2000/svg"><path d="M1 15L15 1M1 1l14 14" stroke="#fff" stroke-width="4"/></svg> '
-      li += '<svg class="playButton" width="15" height="15" onclick="page.playSong(\'' + song.path + '\')" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l12 8-12 8z"/></svg></span><strong>' + song.artist + '</strong> - ' + song.title + '</li>'
-      document.querySelector('div#songs > ul').innerHTML += li
+    if (@artistsList.findIndex (e) =>
+      e == song.artist
+    ) == -1
+      @artistsList.push song.artist
+    @songsList.push song
+
+  updateArtistsList: =>
+    @artistsList = @artistsList.sort (a, b) =>
+      a.toLowerCase() > b.toLowerCase()
+    lis = ''
+    for artist in @artistsList
+      lis += '<li><span onclick="page.updateSongsList(\'' + artist.replace(/\'/g, "\\'\\'") + '\')">' + artist + '</span></li>'
+    document.querySelector('div#artists > ul').innerHTML = lis
+
+  updateSongsList: (filterArtist) =>
+    @songsList = @songsList.sort (a, b) =>
+      a.artist.toLowerCase() > b.artist.toLowerCase() and a.title.toLowerCase() > b.title.toLowerCase()
+    lis = ''
+    @cmd "optionalFileList", [undefined, 'time_downloaded DESC', 999999999], (res) =>
+      metadata = {}
+      for file in res
+        metadata[file.inner_path] = file
+      for song in @songsList
+        if filterArtist and song.artist != filterArtist
+          continue
+        lis += '<li'
+        if not metadata[song.path] or metadata[song.path].is_downloaded != 1
+          lis += ' class="remote"'
+        lis += '><span class="songButtons"><svg class="removeButton" width="15" height="15" onclick="page.removeSong(\'' + song.path + '\')" xmlns="http://www.w3.org/2000/svg"><path d="M1 15L15 1M1 1l14 14" stroke="#fff" stroke-width="4"/></svg> '
+        lis += '<svg class="playButton" width="15" height="15" onclick="page.playSong(\'' + song.path + '\')" xmlns="http://www.w3.org/2000/svg"><path d="M0 0l12 8-12 8z"/></svg></span><strong>' + song.artist + '</strong> - ' + song.title + '</li>'
+      document.querySelector('div#songs > ul').innerHTML = lis
+
+  updateLists: =>
+    @updateArtistsList()
+    @updateSongsList()
 
   resetSongList: =>
     document.querySelector('div#songs > ul').innerHTML = ''
-
-  filterByArtist: (artist) =>
-    @cmd "dbQuery", ["SELECT * FROM songs WHERE artist = '#{artist}' ORDER BY title COLLATE NOCASE ASC"], (res) =>
-      if not res.error
-        @resetSongList()
-        @addSong file for file in res
 
   getMetadata: (filename) =>
     filename = filename.replace(/(_|\.mp3$)/g, ' ').trim()
@@ -94,8 +116,8 @@ class ZeroMusic extends ZeroFrame
               json_raw = unescape encodeURIComponent JSON.stringify data, undefined, 1
               @cmd "fileWrite", ["data/users/" + @siteInfo.auth_address + "/data.json", btoa(json_raw)], (res) =>
                 @cmd "sitePublish", {inner_path: "data/users/" + @siteInfo.auth_address + "/content.json", sign: true}, (res) =>
-                  console.log res
                   @addSong metadata
+                  @updateLists()
                   @playSong path
           else
             console.error res
