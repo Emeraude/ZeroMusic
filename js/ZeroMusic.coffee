@@ -7,6 +7,7 @@ class ZeroMusic extends ZeroFrame
     @player = document.getElementById "player"
     @artistsList = [];
     @songsList = [];
+    @currentFilter = null;
     @cmd "site_info", {}, (site_info) =>
       @siteInfo = site_info
       if @siteInfo.cert_user_id
@@ -53,6 +54,8 @@ class ZeroMusic extends ZeroFrame
     document.querySelector('div#artists > ul').innerHTML = lis
 
   updateSongsList: (filterArtist) =>
+    if filterArtist
+      @currentFilter = filterArtist
     @songsList = @songsList.sort (a, b) =>
       a.artist.toLowerCase() > b.artist.toLowerCase() and a.title.toLowerCase() > b.title.toLowerCase()
     lis = ''
@@ -61,7 +64,7 @@ class ZeroMusic extends ZeroFrame
       for file in res
         metadata[file.inner_path] = file
       for song in @songsList
-        if filterArtist and song.artist != filterArtist
+        if @currentFilter and song.artist != @currentFilter
           continue
         lis += '<li'
         if not metadata[song.path] or metadata[song.path].is_downloaded != 1
