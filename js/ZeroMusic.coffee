@@ -84,20 +84,27 @@ class ZeroMusic extends ZeroFrame
   resetSongList: =>
     document.querySelector('div#songs > ul').innerHTML = ''
 
-  getMetadata: (filename) =>
-    filename = filename.replace(/(_|\.mp3$)/g, ' ').trim()
-    metadata = {}
+  updateMetadata: (files) =>
+    filename = files.files[0].name.replace(/(_|\.mp3$)/g, ' ').trim()
     if filename.match /^\d+/
-      metadata.track = parseInt filename
+      track = parseInt filename
       filename = filename.split(/^\d+\s*([-.]\s*)?/)[2]
     else
-      metadata.track = "unknown"
+      track = "unknown"
     if filename.match /-/
-      metadata.artist = filename.split('-')[0].trim()
-      metadata.title = filename.split('-').slice(1).join('-').trim()
+      artist = filename.split('-')[0].trim()
+      title = filename.split('-').slice(1).join('-').trim()
     else
-      metadata.artist = "unknown"
-      metadata.title = filename.trim()
+      artist = "unknown"
+      title = filename.trim()
+    document.getElementById('artist').value = artist
+    document.getElementById('title').value = title
+
+
+  getMetadata: (filename) =>
+    metadata = {}
+    metadata.artist = document.getElementById('artist').value
+    metadata.title = document.getElementById('title').value
     return metadata
 
   uploadSong: (e) =>
@@ -108,7 +115,7 @@ class ZeroMusic extends ZeroFrame
     if !name.match /\.mp3$/
       return @cmd "wrapperNotification", ["error", "Only mp3 files are allowed for now.", 5000]
     @cmd "dbQuery", ["SELECT MAX(id) + 1 as next_id FROM songs"], (res) =>
-      id = if res[0] then res[0].next_id else 1
+      id = if res[0] && id != null then res[0].next_id else 1
       path = "data/users/" + @siteInfo.auth_address + '/' + id + '.mp3'
       metadata = @getMetadata name
       metadata.path = path

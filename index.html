@@ -8,7 +8,10 @@
   <body>
     <div id="top">
       <a href="#Select+user" id="select_user" onclick='return page.selectUser()'>Select user</a>
-      <input type="file" onchange='return page.uploadSong(this)' />
+      <input type="file" onchange='return page.updateMetadata(this)' id="file"/>
+      artist<input type="text" id="artist" />
+      title<input type="text" id="title" />
+      <input type="button" value="upload" onclick="page.uploadSong(document.getElementById('file'))" />
       <audio id="player" controls></audio>
     </div>
     <div id="container">
