@@ -97,14 +97,17 @@ class ZeroMusic extends ZeroFrame
     else
       artist = "unknown"
       title = filename.trim()
-    document.getElementById('artist').value = artist
-    document.getElementById('title').value = title
-
+    document.getElementById('artistField').value = artist
+    document.getElementById('titleField').value = title
+    document.getElementById('trackField').value = track
 
   getMetadata: (filename) =>
     metadata = {}
-    metadata.artist = document.getElementById('artist').value
-    metadata.title = document.getElementById('title').value
+    metadata.artist = document.getElementById('artistField').value
+    metadata.title = document.getElementById('titleField').value
+    metadata.track = document.getElementById('trackField').value
+    if metadata.track != "unknown"
+      metadata.track = parseInt metadata.track
     return metadata
 
   uploadSong: (e) =>
