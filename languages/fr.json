@@ -1,5 +1,8 @@
 {
   "Artists": "Artistes",
+  "Artist": "Artiste",
+  "Title": "Titre",
+  "Upload": "Envoyer",
   "Songs": "Chansons",
   "Select user": "Sélectionner un utilisateur"
 }
