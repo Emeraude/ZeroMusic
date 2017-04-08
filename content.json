@@ -19,16 +19,16 @@
    "size": 548
   },
   "index.html": {
-   "sha512": "06c96b71e3b9121ad1a0bb17ed127a9e3051546397c68024793ae20c52863337",
-   "size": 668
+   "sha512": "a81f76112c1a9c61a8c353cad5e7843b4360e594bd0216ec837f8349f0eb691e",
+   "size": 1006
   },
   "js/all.js": {
-   "sha512": "f4904ecf1963d1006f5133128dc2c4d11eba9bf46654dbb4f57a428868499fa9",
-   "size": 12933
+   "sha512": "948e97cc235995ba87ada20a64bef665a0dd54dd44a5b2e41265451ab123481b",
+   "size": 13568
   },
   "languages/fr.json": {
-   "sha512": "085939d8d0df6ce83c0b6c7aa7f2f405e09f332922db691dc75a9b578fb5c010",
-   "size": 100
+   "sha512": "7d761e050dd81dd84b7d32fe576cd6fe53f3178021b4d34612fff6ea670b29a1",
+   "size": 166
   }
  },
  "ignore": "(^\\.git(ignore)?|(js|css)/(?!all)(.*)\\.(js|css)|data|.*(\\.coffee|~)$)",
@@ -39,15 +39,15 @@
   }
  },
  "inner_path": "content.json",
- "modified": 1491006821,
+ "modified": 1491651202,
  "repository": "https://github.com/Emeraude/ZeroMusic",
  "sign": [
-  95364046990696104650317331702802581052894786595983552820194490320013091375559,
-  114927586471756840122726414525124060203753993595864522870790571075904952940396
+  69937416518806067325064538784543040455877369252615170442231422985159147861361,
+  97114821427143775316191066272591090334964397011915217488811654164598242032360
  ],
  "signers_sign": "G50lK79M6vT+mUyolvVvfs4Lr2edan0DQDn5CC1ICA5BwgJ8qrvwo0dRkmewQwsK6Plh/5xB+ZNUbZuuPKPbrn0=",
  "signs": {
-  "1MusicXkuN2pk5hRdmroeyaCLDJtzTicpB": "G17mwvm/8/OphoWqdbjnMVOH8XhOpJ0GUc7xNq+6neSnEm0lWs8f/wAlBox39kYBA4LvJ7D57KTlIqogpCVy9Po="
+  "1MusicXkuN2pk5hRdmroeyaCLDJtzTicpB": "GwgzLnEMCaj0uiTwMH4nAGB/gPg1bDCve8P1MvvPa31t0vIqIHdATv9T+k7TLLyKG1klf9aFvpH38fFNX/CRoms="
  },
  "signs_required": 1,
  "title": "ZeroMusic",
