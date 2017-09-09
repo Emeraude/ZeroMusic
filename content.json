@@ -54,5 +54,6 @@
  "translate": [
   "index.html"
  ],
+ "viewport": "width=device-width, initial-scale=0.8",
  "zeronet_version": "0.5.3"
 }
