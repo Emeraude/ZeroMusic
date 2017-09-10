@@ -223,6 +223,28 @@ left: 180px;
 div#artists, div#songs {
   padding-top: 70px;
 }
+div#artists ul li {
+  padding-right: 5px;
 }
-
-
+div#artists h2 {
+	margin-right: 5px;
+}
+div#songs, div#songs ul {
+  padding-left: 0;
+  padding-right: 0;
+}
+div#songs ul li {
+  padding: 5px 20px;
+}
+div#songs h2 {
+	margin-left: 20px;
+}
+.removeButton {
+right: 5px;
+margin-top: 2px;
+}
+.playButton {
+margin-left: -15px;
+margin-top: 2px;
+}
+}
